@@ -25,6 +25,10 @@ class Image(TimeStapmedModel):
     creator = models.ForeignKey(user_models.User, null=True, related_name='images')
     # comment_set # (LOOK IN ALL THE COMMENTS FOR THE ONES THAT HAVE 'IMAGE' = 1) # hidden field
 
+    @property
+    def like_count(self):
+        return self.likes.all().count()
+
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
 
