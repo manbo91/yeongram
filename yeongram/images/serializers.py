@@ -2,7 +2,7 @@ from rest_framework import serializers
 from . import models
 from yeongram.users import models as user_models
 
-class FeedSerializer(serializers.ModelSerializer):
+class FeedUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = user_models.User
@@ -14,7 +14,7 @@ class FeedSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
-    creator = FeedSerializer()
+    creator = FeedUserSerializer(read_only=True)
 
     class Meta:
         model = models.Comment
@@ -35,7 +35,7 @@ class LikeSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many=True)
-    creator = FeedSerializer()
+    creator = FeedUserSerializer()
     
     class Meta:
         model = models.Image
