@@ -128,7 +128,39 @@ class Search(APIView):
 
         hashtags = request.query_params.get('hashtags', None)
 
-        print(hashtags)
+        if hashtags is not None:
+
+            hashtags = hashtags.split(",")
+
+            images = models.Image.objects.filter(
+                tags__name__in=hashtags).distinct()
+
+            serializer = serializers.CountImageSerializer(images, many=True)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+        else:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # [4, 5, 6]
+        # filter(id__in=[4, 5, 6])
+
+
+# deep relationship
+# ex)
+# title: 'hello',
+# location: 'bogota',
+# creator: (User:
+#   id: 1,
+#   username: 'yeon'
+# )
+
+# models.Image.objects.filter(creator__username='yeon')
+# models.Image.objects.filter(creator__username__contains='ye')
+# models.Image.objects.filter(creator__username__icontains='Ye')
+# models.Image.objects.filter(creator__username__exact='yeon')
+# models.Image.objects.filter(creator__username__iexact='YeoN')
 
 
 

@@ -3,7 +3,7 @@ from . import models
 from yeongram.users import models as user_models
 
 
-class UserProfileImageSerializer(serializers.ModelSerializer):
+class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Image
