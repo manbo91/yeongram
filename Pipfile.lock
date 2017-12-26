@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3443d410640c31fc469de6b87a8d929caa61d534d188195ebc5cb80580631116"
+            "sha256": "fa1028f3a797f22874e273d74d9e745fcb77e0823b0c4ba5acae978c9e4b99cf"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -9,9 +9,9 @@
             "os_name": "posix",
             "platform_machine": "x86_64",
             "platform_python_implementation": "CPython",
-            "platform_release": "17.2.0",
+            "platform_release": "17.3.0",
             "platform_system": "Darwin",
-            "platform_version": "Darwin Kernel Version 17.2.0: Fri Sep 29 18:27:05 PDT 2017; root:xnu-4570.20.62~3/RELEASE_X86_64",
+            "platform_version": "Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST 2017; root:xnu-4570.31.3~1/RELEASE_X86_64",
             "python_full_version": "3.6.3",
             "python_version": "3.6",
             "sys_platform": "darwin"
@@ -269,6 +269,13 @@
             ],
             "version": "==4.8.0"
         },
+        "django-taggit": {
+            "hashes": [
+                "sha256:969a68dc244fd3051589b6b917e26777cdf186f95dd51bf2f023f5446e2ca89e",
+                "sha256:87eeae942a2db48bf6e78c081e29d863d8aeab7430427bea3f08b46e801a5191"
+            ],
+            "version": "==0.22.1"
+        },
         "django-test-plus": {
             "hashes": [
                 "sha256:dd10b80613a7c994999d1240277245ef0792c104b42879219db6db2ffcb68a6a"
@@ -277,10 +284,10 @@
         },
         "djangorestframework": {
             "hashes": [
-                "sha256:8056370cc36e67ddbc0a8258b853ef1f696c58fcd2e4e2caf370a5d2fb39aabc",
-                "sha256:03182f37d9975d00ba7c97f4fd8969d1dfa70f8efcad3d1718afacb073b9cb63"
+                "sha256:1f6baf40ed456ed2af6bd1a4ff8bbc3503cebea16509993aea2b7085bc097766",
+                "sha256:9f9e94e8d22b100ed3a43cee8c47a7ff7b185e778a1f2da9ec5c73fc4e081b87"
             ],
-            "version": "==3.7.4"
+            "version": "==3.7.7"
         },
         "docutils": {
             "hashes": [
@@ -297,6 +304,7 @@
                 "sha256:8ad8c4783bf61ded74527bffb48ed9b54166685e4230386a9ed9b1279e2df5b1",
                 "sha256:2d81cbbe0e73112bdfe6ef8576f2238f2ba27dd0d55752a776c41d38b7da2850"
             ],
+            "markers": "python_version == '2.7'",
             "version": "==1.1.6"
         },
         "factory-boy": {
@@ -713,7 +721,6 @@
                 "sha256:63a8255fe7c6269916baa440eb9b6a67139b0b97a01af632e7bd2842e1e02f15",
                 "sha256:d514bd84b284dd3e844f0305ac07511f097e325171f6cc4a20878d11ad771849"
             ],
-            "markers": "python_version < '3.5'",
             "version": "==3.6.2"
         },
         "unidecode": {

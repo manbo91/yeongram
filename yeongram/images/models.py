@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from taggit.managers import TaggableManager
 from yeongram.users import models as user_models # 충돌 방지
 
 # Create your models here.
@@ -24,6 +25,7 @@ class Image(TimeStapmedModel):
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, related_name='images')
     # comment_set # (LOOK IN ALL THE COMMENTS FOR THE ONES THAT HAVE 'IMAGE' = 1) # hidden field
+    tags = TaggableManager()
 
     @property
     def like_count(self):
