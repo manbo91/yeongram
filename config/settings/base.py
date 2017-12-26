@@ -57,7 +57,8 @@ LOCAL_APPS = [
     # custom users app
     'yeongram.users.apps.UsersConfig',
     # Your stuff: custom apps go here
-    'yeongram.images.apps.ImagesConfig',
+    'yeongram.images.apps.ImagesConfig', # images app
+    'yeongram.notifications.apps.NotificationsConfig', # notifications app
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
