@@ -3,6 +3,8 @@ from django.utils.encoding import python_2_unicode_compatible
 from yeongram.users import models as user_models
 from yeongram.images import models as image_models
 
+
+@python_2_unicode_compatible
 class Notification(image_models.TimeStapmedModel):
 
     TYPE_CHOICES = (
@@ -15,3 +17,4 @@ class Notification(image_models.TimeStapmedModel):
     to = models.ForeignKey(user_models.User, related_name='to')
     notification_type = models.CharField(max_length=20, choices=TYPE_CHOICES)
     image = models.ForeignKey(image_models.Image, null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
