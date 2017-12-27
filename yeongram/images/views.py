@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from yeongram.users import models as user_models
+from yeongram.users import serializers as user_serializers
 from yeongram.notifications import views as notification_views
 
 class Feed(APIView):
@@ -38,6 +40,19 @@ class Feed(APIView):
 
 
 class LikeImage(APIView):
+
+    def get(self, request, image_id, format=None):
+        # Like를 긁어온 뒤 누가 좋아요를 생성했는지 알고 싶다.
+        likes = models.Like.objects.filter(image__id=image_id)
+
+        like_creators_ids = likes.values('creator_id')
+
+        users = user_models.User.objects.filter(id__in=like_creators_ids)
+
+        serializer = user_serializers.ListUserSerializer(users, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
     # get은 urls에서 받는 image_id와 같은 변수로 입력하여 arg를 받아야한다.
     def post(self, request, image_id, format=None):
 
@@ -159,6 +174,7 @@ class Search(APIView):
 
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
 class ModerateComments(APIView):
 
     def delete(self, request, image_id, comment_id, format=None):
@@ -188,8 +204,6 @@ class ModerateComments(APIView):
 class ImageDetail(APIView):
 
     def get(self, request, image_id, format=None):
-
-        user = request.user
         
         try:
             image = models.Image.objects.get(id=image_id)
@@ -201,7 +215,29 @@ class ImageDetail(APIView):
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+    
+    def put(self, request, image_id, format=None):
 
+        user = request.user
+
+        try:
+            image = models.Image.objects.get(id=image_id, creator=user)
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+        serializer = serializers.InputImageSerializer(
+            image, data=request.data, partial=True)
+
+        if serializer.is_valid():
+
+            serializer.save(creator=user)
+
+            return Response(data=serializer.data, status=status.HTTP_204_NO_CONTENT)
+
+        else:
+
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
