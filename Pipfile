@@ -36,6 +36,7 @@ pytest-sugar = "==0.9.0"
 django = "==1.10.8"
 djangorestframework = "*"
 django-taggit = "*"
+djangorestframework-jwt = "*"
 
 
 [requires]
