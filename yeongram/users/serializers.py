@@ -5,7 +5,7 @@ from yeongram.images import serializers as images_serializers
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
-    images = images_serializers.CountImageSerializer(many=True)
+    images = images_serializers.CountImageSerializer(many=True, read_only=True)
     post_count = serializers.ReadOnlyField() # 해당 필드를 수정하지 않겠다는 것
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
