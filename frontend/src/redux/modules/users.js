@@ -1,8 +1,8 @@
-const intialState = {
+const initialState = {
   isLoggedIn: localStorage.getItem('jwt') || false,
 }
 
-function reducer(state = intialState, action) {
+function reducer(state = initialState, action) {
   switch(action.type) {
     default:
       return state;
