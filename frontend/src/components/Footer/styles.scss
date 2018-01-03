@@ -9,26 +9,28 @@
   font-size: $small-font-size;
   text-transform: uppercase;
   flex-wrap: wrap;
-  @include breakpoint(phone) {
+  @include breakpoint("phone") {
     justify-content: center;
   }
   .column {
     margin-bottom: 15px;
-    @include breakpoint(phone) {
+    margin-right: 20px;
+    margin-left: 20px;
+    @include breakpoint("phone") {
       margin-bottom: 0;
     }
     .nav {
       .list {
         display: flex;
         flex-wrap: wrap;
-        @include breakpoint(phone) {
+        @include breakpoint("phone") {
           justify-content: center;
         }
         .list-item {
           margin-right: 10px;
           color: $dark-blue;
           cursor: pointer;
-          @include breakpoint(phone) {
+          @include breakpoint("phone") {
             margin-bottom: 15px;
           }
         }
