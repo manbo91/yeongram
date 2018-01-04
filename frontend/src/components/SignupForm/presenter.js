@@ -10,7 +10,7 @@ const SignupForm = (props, context) => (
     </h3>
     <FacebookLogin
       appId="509534036092768"
-      autoLoad={true}
+      autoLoad={false}
       fields="name,email,picture"
       cssClass={formStyles.facebookButton}
       callback={props.handleFacebookLogin}
