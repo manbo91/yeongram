@@ -1,6 +1,6 @@
 .footer {
   max-width: $max-page-width;
-  width: 100%;
+  width: 95%;
   margin: 55px auto;
   display: flex;
   align-items: center;
@@ -9,29 +9,30 @@
   font-size: $small-font-size;
   text-transform: uppercase;
   flex-wrap: wrap;
-  @include breakpoint("phone") {
+  @include breakpoint("phone-tablet") {
     justify-content: center;
   }
   .column {
     margin-bottom: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
-    @include breakpoint("phone") {
-      margin-bottom: 0;
+    @include breakpoint("phone-tablet") {
+      justify-content: center;
+      max-width: 350px;
+      margin-bottom: 25px;
     }
     .nav {
       .list {
         display: flex;
         flex-wrap: wrap;
-        @include breakpoint("phone") {
+        @include breakpoint("phone-tablet") {
           justify-content: center;
         }
         .list-item {
           margin-right: 10px;
           color: $dark-blue;
           cursor: pointer;
-          @include breakpoint("phone") {
+          @include breakpoint("phone-tablet") {
             margin-bottom: 15px;
+            margin-right: 15px;
           }
         }
       }
