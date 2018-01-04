@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import FacebookLogin from "react-facebook-login";
 import formStyles from "shared/formStyles.scss";
 
-const SignupForm = props => (
+const SignupForm = (props, context) => (
   <div className={formStyles.formComponent}>
     <h3 className={formStyles.signupHeader}>
       Sign up to see photos and<br />videos from your friends.
@@ -15,6 +15,7 @@ const SignupForm = props => (
       cssClass={formStyles.facebookButton}
       callback={props.handleFacebookLogin}
       icon="fa-facebook-official"
+      textButton={context.t('Log in with Facebook')}
     />
     <span className={formStyles.divider}>or</span>
     <form className={formStyles.form} onSubmit={props.handleSumbit}>
