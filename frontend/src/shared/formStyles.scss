@@ -11,8 +11,24 @@
     margin-bottom: 20px;
   }
   .facebook-button {
-    @include blueButton();
-    svg {
+    width: 100%;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    background-color: $light-blue;
+    color: white;
+    font-weight: 600;
+    border: 0;
+    font-size: $nomal-font-size;
+    line-height: 26px;
+    cursor: pointer;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:active {
+      opacity: 0.9;
+    }
+    i {
       margin-right: 8px;
     }
   }
@@ -71,16 +87,19 @@
     }
   }
   .facebook-link {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
     margin: 10px 0;
     font-size: $nomal-font-size;
+    border: 0;
+    background-color: transparent;
     color: $dark-blue;
     cursor: pointer;
-    svg {
+    i {
       margin-right: 10px;
+    }
+    &:focus,
+    &:active {
+      outline: none;
     }
   }
   .forgot-link {

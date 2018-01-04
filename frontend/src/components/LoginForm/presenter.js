@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Ionicon from "react-ionicons";
+import FacebookLogin from "react-facebook-login";
 import formStyles from "shared/formStyles.scss";
 
 const LoginForm = props => (
@@ -25,10 +25,14 @@ const LoginForm = props => (
       <input className={formStyles.button} type="submit" value="Log in" />
     </form>
     <span className={formStyles.divider}>or</span>
-    <span className={formStyles.facebookLink}>
-      <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" />
-      Log in with Facebook
-    </span>
+    <FacebookLogin
+      appId="509534036092768"
+      autoLoad={true}
+      fields="name,email,picture"
+      cssClass={formStyles.facebookLink}
+      callback={props.handleFacebookLogin}
+      icon="fa-facebook-official"
+    />
     <span className={formStyles.forgotLink}>Forgot password?</span>
   </div>
 );
@@ -38,6 +42,7 @@ LoginForm.propTypes = {
   passwordValue: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleFacebookLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
