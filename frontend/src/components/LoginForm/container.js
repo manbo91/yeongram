@@ -9,7 +9,7 @@ class Container extends Component {
   };
   static propTypes = {
     facebookLogin: PropTypes.func.isRequired
-  }
+  };
   render() {
     const { username, password } = this.state;
     return (
