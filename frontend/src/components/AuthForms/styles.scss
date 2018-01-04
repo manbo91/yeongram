@@ -1,0 +1,101 @@
+.formComponent {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  .signup-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: $dark-grey;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  .facebook-button {
+    @include blueButton();
+    svg {
+      margin-right: 8px;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+    .text-input {
+      padding: 9px 0 7px 8px;
+      font-size: $nomal-font-size;
+      font-weight: 400;
+      border: 1px solid #efefef;
+      border-radius: 3px;
+      background-color: $bg-color;
+      margin-bottom: 5px;
+      &:focus {
+        outline: none;
+        border: 1px solid #b2b2b2;
+      }
+    }
+    .button {
+      @include blueButton();
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .divider {
+    text-transform: uppercase;
+    color: $dark-grey;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 20px 0;
+    position: relative;
+    &:before {
+      content: "";
+      width: 40%;
+      height: 1px;
+      position: absolute;
+      top: 7px;
+      left: 0;
+      opacity: 0.8;
+      background-color: $dark-grey;
+    }
+    &:after {
+      content: "";
+      width: 40%;
+      height: 1px;
+      position: absolute;
+      top: 7px;
+      right: 0;
+      opacity: 0.8;
+      background-color: $dark-grey;
+    }
+  }
+  .facebook-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    font-size: $nomal-font-size;
+    color: $dark-blue;
+    cursor: pointer;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .forgot-link {
+    color: $dark-blue;
+    font-size: $small-font-size;
+    margin: 12px 8px 0 0;
+    cursor: pointer;
+  }
+  .terms {
+    color: $dark-grey;
+    font-size: $nomal-font-size;
+    margin: 20px 5px 0 0;
+    line-height: 20px;
+    span {
+      font-weight: 600;
+    }
+  }
+}
