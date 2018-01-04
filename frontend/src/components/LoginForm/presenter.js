@@ -1,15 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Ionicon from "react-ionicons";
 import formStyles from "shared/formStyles.scss";
 
 const LoginForm = props => (
   <div className={formStyles.formComponent}>
-    <form className={formStyles.form}>
-      <input className={formStyles.textInput} type="text" placeholder="Username" />
+    <form className={formStyles.form} onSubmit={props.handleSubmit}>
+      <input
+        className={formStyles.textInput}
+        type="text"
+        placeholder="Username"
+        value={props.usernameValue}
+        onChange={props.handleInputChange}
+        name="username"
+      />
       <input
         className={formStyles.textInput}
         type="password"
         placeholder="Password"
+        value={props.passwordValue}
+        onChange={props.handleInputChange}        
+        name="password"
       />
       <input className={formStyles.button} type="submit" value="Log in" />
     </form>
@@ -21,5 +32,12 @@ const LoginForm = props => (
     <span className={formStyles.forgotLink}>Forgot password?</span>
   </div>
 );
+
+LoginForm.propTypes = {
+  usernameValue: PropTypes.string.isRequired,
+  passwordValue: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default LoginForm;

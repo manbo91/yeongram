@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Ionicon from "react-ionicons";
 import formStyles from "shared/formStyles.scss";
 
@@ -12,26 +13,38 @@ const SignupForm = props => (
       Log in with Facebook
     </button>
     <span className={formStyles.divider}>or</span>
-    <form className={formStyles.form}>
+    <form className={formStyles.form} onSubmit={props.handleSumbit}>
       <input
         className={formStyles.textInput}
         type="email"
         placeholder="Email"
+        value={props.emailValue}
+        onChange={props.handleInputChange}
+        name="email"
       />
       <input
         className={formStyles.textInput}
         type="text"
         placeholder="Full Name"
+        value={props.fullNameValue}
+        onChange={props.handleInputChange}
+        name="fullName"
       />
       <input
         className={formStyles.textInput}
         type="username"
         placeholder="Username"
+        value={props.usernameValue}
+        onChange={props.handleInputChange}
+        name="username"
       />
       <input
         className={formStyles.textInput}
         type="password"
         placeholder="Password"
+        value={props.passwordValue}
+        onChange={props.handleInputChange}
+        name="password"
       />
       <input
         className={formStyles.button}
@@ -45,5 +58,14 @@ const SignupForm = props => (
     </p>
   </div>
 );
+
+SignupForm.propTypes = {
+  handleInputChange: PropTypes.func.isRequired,
+  handleSumbit: PropTypes.func.isRequired,
+  emailValue: PropTypes.string.isRequired,
+  fullNameValue: PropTypes.string.isRequired,
+  usernameValue: PropTypes.string.isRequired,
+  passwordValue: PropTypes.string.isRequired,
+}
 
 export default SignupForm;
