@@ -3,14 +3,21 @@
 // actions
 
 const SAVE_TOKEN = "SAVE_TOKEN";
+const LOGOUT = "LOGOUT";
 
 // aciton creators
 
 function saveToken(token) {
   return {
     type: SAVE_TOKEN,
-    token,
-  }
+    token
+  };
+}
+
+function logout() {
+  return {
+    type: LOGOUT
+  };
 }
 
 // API actions
@@ -26,13 +33,13 @@ function facebookLogin(access_token) {
         access_token
       })
     })
-    .then(response => response.json())
-    .then(json => {
-      if(json.token) {
-        dispatch(saveToken(json.token));
-      }
-    })
-    .catch(err => console.log(err));
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
+      })
+      .catch(err => console.log(err));
   };
 }
 
@@ -48,14 +55,14 @@ function usernameLogin(username, password) {
         password
       })
     })
-    .then(response => response.json())
-    .then(json => {
-      if(json.token) {
-        dispatch(saveToken(json.token))
-      }
-    })
-    .catch(err => console.log(err));
-  }
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
+      })
+      .catch(err => console.log(err));
+  };
 }
 
 function createAccount(username, password, email, name) {
@@ -70,24 +77,24 @@ function createAccount(username, password, email, name) {
         password1: password,
         password2: password,
         email,
-        name,
+        name
       })
     })
-    .then(response => response.json())
-    .then(json => {
-      if (json.token) {
-        dispatch(saveToken(json.token))
-      }
-    })
-    .catch(err => console.log(err));
-  }
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
+      })
+      .catch(err => console.log(err));
+  };
 }
 
 // initial state
 
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
-  token: localStorage.getItem('jwt')
+  token: localStorage.getItem("jwt")
 };
 
 // reducer
@@ -96,6 +103,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case SAVE_TOKEN:
       return applySetToken(state, action);
+    case LOGOUT:
+      return applyLogout(state, action);
     default:
       return state;
   }
@@ -105,13 +114,20 @@ function reducer(state = initialState, action) {
 
 function applySetToken(state, action) {
   const { token } = action;
-  localStorage.setItem('jwt', token);
+  localStorage.setItem("jwt", token);
 
   return {
     ...state,
     isLoggedIn: true,
-    token,
-  }
+    token
+  };
+}
+
+function applyLogout(state, action) {
+  localStorage.removeItem("jwt");
+  return {
+    isLoggedIn: false
+  };
 }
 
 // exports
@@ -120,6 +136,7 @@ const actionCreators = {
   facebookLogin,
   usernameLogin,
   createAccount,
+  logout,
 };
 
 export { actionCreators };
