@@ -7,7 +7,7 @@
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
-    max-width: 800px;
+    max-width: $max-page-width;
     width: 90%;
     height: 90px;
     .column {
@@ -15,15 +15,14 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      width: 200px;
       .logo {
-        flex: 1;
         width: 200px;
         @include breakpoint("phone-tablet") {
           display: none;
         }
       }
       .searchInput {
-        flex: 1;
         text-align: center;
         font-size: $nomal-font-size;
         padding: 4px 15px;
@@ -38,7 +37,6 @@
         }
       }
       .navIcon {
-        flex: 1;
         margin: 0 15px;
         @include breakpoint("phone-tablet") {
           display: none;
