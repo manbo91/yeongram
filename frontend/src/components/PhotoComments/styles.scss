@@ -1,0 +1,15 @@
+.container {
+  margin: 8px 0;
+  .comments {
+    .commentContainer {
+      margin: 8px 0;
+      .username {
+        font-size: $normal-font-size;
+        font-weight: 700;
+      }
+      .comment {
+        font-size: $normal-font-size;
+      }
+    }
+  }
+}

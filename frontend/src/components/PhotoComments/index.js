@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import stlyes from "./styles.scss";
+import styles from "./styles.scss";
 
 const PhotoComments = props => (
-  <div>
-    <ul>
+  <div className={styles.container}>
+    <ul className={styles.comments}>
       <Comment username={props.creator} comment={props.action} />
       {props.comments.map(comment => (
         <Comment
@@ -18,8 +18,9 @@ const PhotoComments = props => (
 );
 
 const Comment = props => (
-  <li>
-    <span>{props.username}</span> <span>{props.comment}</span>
+  <li className={styles.commentContainer}>
+    <span className={styles.username}>{props.username}</span>{" "}
+    <span className={styles.comment}>{props.comment}</span>
   </li>
 );
 

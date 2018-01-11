@@ -1,26 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
-import PhotoActions from 'components/PhotoActions';
-import PhotoComments from 'components/PhotoComments';
-import TimeStamp from 'components/TimeStamp';
-import CommentBox from 'components/CommentBox';
+import PhotoActions from "components/PhotoActions";
+import PhotoComments from "components/PhotoComments";
+import TimeStamp from "components/TimeStamp";
+import CommentBox from "components/CommentBox";
 
 const FeedPhoto = (props, context) => {
   return (
     <div className={styles.feedPhoto}>
-      <header>
-        <img
-          src={props.creator.profile_image || require("images/noPhoto.png")}
-          alt={props.creator.username}
-        />
-        <div>
-          <span>{props.creator.username}</span>
-          <span>{props.location}</span>
+      <header className={styles.header}>
+        <div className={styles.profileImage}>
+          <img
+            src={props.creator.profile_image || require("images/noPhoto.png")}
+            alt={props.creator.username}
+          />
+        </div>
+        <div className={styles.profile}>
+          <span className={styles.username}>{props.creator.username}</span>
+          <span className={styles.location}>{props.location}</span>
         </div>
       </header>
-      <img src={props.file} alt={props.caption} />
-      <div>
+      <img
+        className={styles.captionImage}
+        src={props.file}
+        alt={props.caption}
+      />
+      <div className={styles.box}>
         <PhotoActions number={props.like_count} />
         <PhotoComments
           caption={props.caption}

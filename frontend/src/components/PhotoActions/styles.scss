@@ -1,0 +1,14 @@
+.container {
+  .iconContainer {
+    span {
+      &:last-child {
+        margin-left: 12px;
+      }
+    }
+  }
+  .like {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+}

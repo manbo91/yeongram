@@ -6,4 +6,42 @@
   &:last-child {
     margin-bottom: 0;
   }
+  .header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    .profile-image {
+      margin: 0 15px;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      border-radius: 50%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      .username {
+        font-size: $normal-font-size;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .location {
+        font-size: $small-font-size;
+      }
+    }
+  }
+  .caption-image {
+    width: 100%;
+  }
+  .box {
+    width: 100%;
+    padding: 0 15px;
+    padding-top: 10px;
+  }
 }
