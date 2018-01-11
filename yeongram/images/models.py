@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from taggit.managers import TaggableManager
 from yeongram.users import models as user_models # 충돌 방지
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 # Create your models here.
 @python_2_unicode_compatible
@@ -34,6 +35,10 @@ class Image(TimeStapmedModel):
     @property
     def comment_count(self):
         return self.comments.all().count()
+
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
 
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
