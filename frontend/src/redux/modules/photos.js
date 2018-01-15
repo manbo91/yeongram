@@ -60,8 +60,7 @@ function likePhoto(photoId) {
       headers: {
         Authorization: `JWT ${token}`
       }
-    })
-    .then(response => {
+    }).then(response => {
       if (response.status === 401) {
         dispatch(userActions.logout());
       } else if (!response.ok) {
@@ -80,12 +79,31 @@ function unLikePhoto(photoId) {
       headers: {
         Authorization: `JWT ${token}`
       }
-    })
-    .then(response => {
+    }).then(response => {
       if (response.status === 401) {
         dispatch(userActions.logout());
       } else if (!response.ok) {
         dispatch(doUnlikePhoto());
+      }
+    });
+  };
+}
+
+function commentPhoto(photoId, message) {
+  return (dispatch, getState) => {
+    const { user: { token } } = getState();
+    fetch(`/images/${photoId}/comments/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: message
+      })
+    }).then(response => {
+      if (response.status === 401) {
+        dispatch(userActions.logout);
       }
     });
   };
@@ -143,7 +161,7 @@ function applyUnlikePhoto(state, action) {
     return photo;
   });
 
-  return { ...state, feed: updatedFeed };  
+  return { ...state, feed: updatedFeed };
 }
 
 // exports
@@ -152,6 +170,7 @@ const actionCreators = {
   getFeed,
   likePhoto,
   unLikePhoto,
+  commentPhoto
 };
 
 export { actionCreators };
