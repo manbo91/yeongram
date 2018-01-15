@@ -12,6 +12,7 @@
     height: 60px;
     border-bottom: 1px solid #ddd;
     .profile-image {
+      z-index: auto;
       margin: 0 15px;
       position: relative;
       width: 30px;
