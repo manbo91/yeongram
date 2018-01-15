@@ -6,10 +6,14 @@ import styles from "./styles.scss";
 const PhotoActions = (props, context) => (
   <div className={styles.container}>
     <div className={styles.iconContainer}>
-      <span>
-        <Ionicon icon="ios-heart-outline" fontSize="28px" color="black" />
+      <span onClick={props.handleHeartClick}>
+        {props.isLiked ? (
+          <Ionicon icon="ios-heart" fontSize="28px" color="#EB4B59" />
+        ) : (
+          <Ionicon icon="ios-heart-outline" fontSize="28px" color="black" />
+        )}
       </span>
-      <span>
+      <span onClick={props.handleHeartClick}>
         <Ionicon icon="ios-text-outline" fontSize="28px" color="black" />
       </span>
     </div>
@@ -25,7 +29,10 @@ PhotoActions.contextTypes = {
 };
 
 PhotoActions.propTypes = {
-  number: PropTypes.number.isRequired
+  number: PropTypes.number.isRequired,
+  isLiked: PropTypes.bool.isRequired,
+  photoId: PropTypes.number.isRequired,
+  handleHeartClick: PropTypes.func.isRequired
 };
 
 export default PhotoActions;
